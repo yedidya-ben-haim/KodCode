@@ -1,0 +1,26 @@
+# Data Model
+
+{
+  "id": num,
+  "title": "mission",
+  "completed": false
+}
+
+
+
+    Endpoint    |   Method  |   Description |   Success Response(Code)
+
+    /todo           GET        read all                200
+                                mission
+
+    /todo/{id]      GET        return mission
+                                by ID                   200
+
+    /todo           POST        create a new            201
+                                mission
+
+    /todo/{ID}      DELETE      delete a mission
+                                by mission id           200
+
+    /todo/{ID}      PUT         replace a mission
+                                by misiion id           200
