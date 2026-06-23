@@ -1,7 +1,21 @@
 .venv/
 __pycache__/
 .idea/
-try.py
+
+#  c#
+
+[Bb]in/
+[Oo]bj/
+
 .vs/
-bin/
-obj/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+Thumbs.db
+.DS_Store
+
+appsettings.Development.json
+*.env
