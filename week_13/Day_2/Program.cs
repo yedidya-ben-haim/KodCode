@@ -1,61 +1,161 @@
-﻿namespace project
+﻿namespace Project
 {
-    class project_day_1
+    class ProjectDay2
     {
-        class ImageMetadataManagerBadVersion
+        interface IScorable
         {
-            public int Id { set; get; };
-            public double CloudCover { set; get; };
-            public string Sensor { set; get; };
+            int Score();
+        }
 
-            public bool IsValid()
+        interface IRetaskable
+        {
+            void Retask();
+        }
+
+        interface IThermalCalibratable
+        {
+            void CalibrateThermal();
+        }
+
+        abstract class SatelliteImage
+        {
+            public int Id { get; }
+            public double CloudCover { get; }
+
+
+            protected SatelliteImage(int id, double cloudCover)
             {
-                if (CloudCover < 0 && CloudCover > 100)
+                if (cloudCover < 0 || cloudCover > 100)
                 {
-                    return true;
+                    throw new ArgumentException("Cloud cover must be between 0 and 100");
                 }
-                return false;
+
+                Id = id;
+                CloudCover = cloudCover;
             }
 
-            public string Format()
+            public abstract string SensorName { get; }
+
+            public abstract int Score();
+        }
+
+        class SarImage : SatelliteImage, IScorable
+        {
+            public SarImage(int id, double cloudCover) : base(id, cloudCover)
             {
-                return $"Image {Id}:{CloudCover} cloud {Sensor}."
+
             }
 
-            void SaveToFile(ImageMetadataManagerBadVersion i, string path)
+            public override string SensorName => "SAR";
+
+            public override int Score()
             {
-                File.WriteAllText(path, i.Format());
+                return 100 - (int)CloudCover;
             }
+        }
 
-            public int Score(ImageMetadataManagerBadVersion i)
+        class EoImage : SatelliteImage
+        {
+            public EoImage(int id, double cloudCover) : base(id, cloudCover)
             {
-                int SensorScore = 0;
 
-                switch (i.Sensor)
-                {
-                    case "SAR":
-                        SensorScore = 100;
-                        break;
-
-                    case "EO":
-                        SensorScore = 60;
-                        break;
-
-                    case "IR":
-                        SensorScore = 40;
-                        break;
-
-                    default:
-                        SensorScore = 0;
-                        break;
-                }
-                return SensorScore - (int)i.CloudCover;
             }
 
+            public override string SensorName => "EO";
+
+            public override int Score()
+            {
+                return 60 - (int)CloudCover;
+            }
+        }
+
+        class IrImage : SatelliteImage
+        {
+            public IrImage(int id, double cloudCover) : base(id, cloudCover)
+            {
+
+            }
+
+            public override string SensorName => "IR";
+
+            public override int Score()
+            {
+                return 40 - (int)CloudCover;
+            }
+        }
+
+        class MultispectralImage : SatelliteImage
+        {
+            public MultispectralImage(int id, double cloudCover) : base(id, cloudCover)
+            {
+
+            }
+
+            public override string SensorName => "MULTISPECTRAL";
+
+            public override int Score()
+            {
+                return 80 - (int)CloudCover;
+            }
+        }
+
+        class QuickLookImage : SatelliteImage
+        {
+            public QuickLookImage(int id, double cloudCover) : base(id, cloudCover)
+            {
+
+            }
+
+            public override string SensorName => "QuickLook";
+
+            public override int Score()
+            {
+               return 0;
+            }
+        }
+
+        class Repository<T>
+        {
+            private readonly List<T> _items = new();
+
+            public void Add(T item)
+            {
+                _items.Add(item);
+            }
+
+            public T Get(int index)
+            {
+                return _items[index];
+            }
+
+            public int Count => _items.Count;
+
+            public List<T> GetAll()
+            {
+                return _items;
+            }
+        }
+
+
+        public static void Main()
+        {
+            Repository<SatelliteImage> repository = new();
 
 
 
 
+            try
+            {
+                repository.Add(new SarImage(1, 20));
+                repository.Add(new QuickLookImage(1, 150));
+            }
+            catch (AggregateException ex)
+            {
+                Console.WriteLine($"dropped corrupt record {ex}");
+            }
+
+          
         }
     }
 }
+
