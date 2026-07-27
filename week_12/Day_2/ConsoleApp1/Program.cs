@@ -133,7 +133,7 @@ namespace poject
 
             public override bool IsTrackable()
             {
-                if (TerrainType == "tunnel")
+                if (TerrainType.ToLowerInvariant() == "tunnel")
                 {
                     return false;
                 }
@@ -160,7 +160,7 @@ namespace poject
             platforms.Add(new SeaPlatform(3, 40, 50, 60));
             platforms.Add(new SeaPlatform(4, 20, 30, 400));
             platforms.Add(new GroundPlatform(5, 20, 30, "road"));
-            platforms.Add(new GroundPlatform(6, 20, 30, "tunnel"));
+            platforms.Add(new GroundPlatform(6, 20, 30, "Tunnel"));
 
 
             foreach (Platform platform in platforms)

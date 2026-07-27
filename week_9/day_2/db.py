@@ -92,3 +92,4 @@ def delete(soldier_id: int) ->bool:
 
     return deleted
 
+

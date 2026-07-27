@@ -1,0 +1,12 @@
+=== Student Results ===
+1. Avi: 97.7
+2. MOMO: 91.7
+3. Dan: 84.3
+4. Yoni: 71.7
+5. Sara: 50.0
+
+=== Statistics ===
+Class average: 79.1
+Highest: Avi 97.7
+Lowest: Sara 50.0
+Passing (>=60): 4/5

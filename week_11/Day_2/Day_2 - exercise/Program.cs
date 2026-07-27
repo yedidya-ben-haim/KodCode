@@ -93,6 +93,12 @@ namespace project
 
         static void FleetSummarize(List<int> ids, List<double> speeds, List<string> headings)
         {
+            if (ids.Count == 0) 
+            {
+                Console.WriteLine("Fleet is empty.");
+                return;
+            }
+
             // count
             int count = ids.Count;
 
@@ -103,14 +109,8 @@ namespace project
             {
                 sumSpeed += speed;
             }
-            if (count == 0)
-            {
-                averageSpeed =  0
-            }
-            else
-            {
-                averageSpeed = sumSpeed / count;
-            }
+             averageSpeed = sumSpeed / count;
+        
 
 
 

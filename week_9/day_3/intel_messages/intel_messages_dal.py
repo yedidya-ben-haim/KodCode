@@ -1,5 +1,8 @@
 import mysql.connector
 
+from day_2.db import update
+
+
 class IntelMessagesDAL:
     VALID_CLASSIFICATIONS = ('unclassified', 'confidential', 'secret', 'top_secret')
 
@@ -90,15 +93,29 @@ class IntelMessagesDAL:
         return last_id
 
     def update(self, message_id: int, data: dict) -> bool:
-        # Build a dynamic SET clause from the keys in data
-        # Only update the columns that are present in data
-        # Commit the transaction
-        # Return True if a row was changed, False if the id did not exist
-        # Never use f-strings for values, only %s
+        """
+            Build a dynamic SET clause from the keys in data
+            Only update the columns that are present in data
+            Commit the transaction
+            Return True if a row was changed, False if the id did not exist
+            Never use f-strings for values, only %s
+        """
         if not data:
             return False
 
         in_part = [f"{key}= %s" for key in data.keys()]
+        in_str = ", ".join(in_part)
+        update_date = list(data.values()) + [message_id]
+
+        query = f"UPDATE intel_messages SET {in_str} WHERE id = %s"
+        self.cursor.execute(query, update_date)
+        self.connection.commit()
+
+        updated = self.cursor.rowcount > 0
+        return updated
+
+
+
 
 
     def delete(self, message_id: int) -> bool:
@@ -138,4 +155,4 @@ class IntelMessagesDAL:
 
 
 dal = IntelMessagesDAL("localhost","root","secret", "mydb")
-print(dal.update(1, {"unit": 49, "a":"b"}))
+print(dal.update(1, {"unit": 80, "classification": "secret"}))
