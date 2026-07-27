@@ -1,21 +1,134 @@
-.venv/
-__pycache__/
-.idea/
+# =========================
+# C# / .NET / ASP.NET
+# =========================
 
-#  c#
+bin/
+obj/
+out/
 
-[Bb]in/
-[Oo]bj/
-
-.vs/
-.vscode/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-Thumbs.db
-.DS_Store
+.vs/
 
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Test results
+TestResults/
+*.trx
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# ASP.NET local settings and secrets
 appsettings.Development.json
-*.env
+appsettings.Local.json
+secrets.json
+
+# Publish output
+publish/
+*.Publish.xml
+*.pubxml
+*.pubxml.user
+
+# Entity Framework generated local files
+*.db
+*.db-shm
+*.db-wal
+
+
+# =========================
+# Python
+# =========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Python tools
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+
+# =========================
+# PyCharm / JetBrains
+# =========================
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+
+# =========================
+# Visual Studio Code
+# =========================
+
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.example.json
+
+
+# =========================
+# Operating systems
+# =========================
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+
+# =========================
+# Logs and temporary files
+# =========================
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
