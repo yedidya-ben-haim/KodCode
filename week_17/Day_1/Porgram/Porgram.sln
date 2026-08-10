@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlQueries", "SqlQueries.csproj", "{A6C0A8EC-2499-4A89-8B7D-B45EB1753FFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6C0A8EC-2499-4A89-8B7D-B45EB1753FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C0A8EC-2499-4A89-8B7D-B45EB1753FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C0A8EC-2499-4A89-8B7D-B45EB1753FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C0A8EC-2499-4A89-8B7D-B45EB1753FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
